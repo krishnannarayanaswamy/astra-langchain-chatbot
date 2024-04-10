@@ -221,7 +221,7 @@ export function ChatWindow(props: { conversationId: string }) {
           mb={1}
           color={"white"}
         >
-          Astra Langchain AI Assistant
+          Teacher's AI Assistant
         </Heading>
         {messages.length > 0 ? (
           <Heading fontSize="md" fontWeight={"normal"} mb={1} color={"white"}>
@@ -235,7 +235,7 @@ export function ChatWindow(props: { conversationId: string }) {
             marginTop={"10px"}
             textAlign={"center"}
           >
-            Welcome to Astra Langchain AI Assistant. Ask me any questions on your data
+            Welcome to Teacher's Assistant. Ask me any questions
           </Heading>
         )}
         <div className="text-white flex flex-wrap items-center mt-4">
@@ -290,7 +290,7 @@ export function ChatWindow(props: { conversationId: string }) {
           value={input}
           maxRows={5}
           marginRight={"56px"}
-          placeholder="What is this document about?"
+          placeholder="Намайг 10-р ангийн сурагчийг давтлагын шалгалтанд бэлдэж байгаа долгионы сэдэвтэй холбоотой сургалтын гарын авлага өгнө үү."
           textColor={"white"}
           borderColor={"rgb(58, 58, 61)"}
           onChange={(e) => setInput(e.target.value)}

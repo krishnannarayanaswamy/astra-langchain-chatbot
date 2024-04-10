@@ -40,10 +40,6 @@ const filterSources = (sources: Source[], content: string,) => {
   const filtered: Source[] = [];
   const urlMap = new Map<string, number>();
   const indexMap = new Map<number, number>();
-  if (content.includes("I am not able to answer this question") || content.includes("Hello")) {
-    return { filtered, indexMap };
-  }
-  else {
     sources.forEach((source, i) => {
       const { url } = source;
       const index = urlMap.get(url);
@@ -59,7 +55,7 @@ const filterSources = (sources: Source[], content: string,) => {
       }
     });
     return { filtered, indexMap };
-  }
+  
 };
 
 const createAnswerElements = (
@@ -273,7 +269,7 @@ export function ChatMessageBubble(props: {
                 color={"blue.300"}
                 paddingBottom={"10px"}
               >
-                Sources
+                Reference materials
               </Heading>
               <HStack spacing={"10px"} maxWidth={"100%"} overflow={"auto"}>
                 {filteredSources.map((source, index) => (
