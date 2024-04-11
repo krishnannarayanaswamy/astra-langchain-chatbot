@@ -142,8 +142,10 @@ export function ChatWindow(props: { conversationId: string }) {
           sources = streamedResponse.logs[
             sourceStepName
           ].final_output.output.map((doc: Record<string, any>) => ({
-            url: doc.metadata.source,
-            title: doc.metadata.section,
+            url: doc.metadata.medle,
+            title: doc.metadata.textbook_content_name,
+            additional_url: doc.metadata.laboratory,
+            additional_title : doc.metadata.textbook_name,
           }));
         }
         if (streamedResponse.id !== undefined) {

@@ -268,8 +268,8 @@ export function ChatMessageBubble(props: {
                 mb={1}
                 color={"blue.300"}
                 paddingBottom={"10px"}
-              >
-                Reference materials
+              > 
+                Further Reference materials from Medle and Labs
               </Heading>
               <HStack spacing={"10px"} maxWidth={"100%"} overflow={"auto"}>
                 {filteredSources.map((source, index) => (
