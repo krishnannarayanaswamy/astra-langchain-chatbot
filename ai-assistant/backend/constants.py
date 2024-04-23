@@ -1,1 +1,1 @@
-ASTRA_COLLECTION_NAME = "doe_mongolia_docs"
+ASTRA_COLLECTION_NAME = "sav_docs"
