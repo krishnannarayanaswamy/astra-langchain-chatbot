@@ -55,7 +55,6 @@ const filterSources = (sources: Source[], content: string,) => {
       }
     });
     return { filtered, indexMap };
-  
 };
 
 const createAnswerElements = (
@@ -269,7 +268,7 @@ export function ChatMessageBubble(props: {
                 color={"blue.300"}
                 paddingBottom={"10px"}
               > 
-                Further Reference materials from Medle and Labs
+                Sources
               </Heading>
               <HStack spacing={"10px"} maxWidth={"100%"} overflow={"auto"}>
                 {filteredSources.map((source, index) => (

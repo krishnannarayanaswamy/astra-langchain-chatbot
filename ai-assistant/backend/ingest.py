@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 def get_embeddings_model() -> Embeddings:
     return OpenAIEmbeddings(model="text-embedding-3-large", dimensions=1024)
 
+#, dimensions=1024
 
 def metadata_extractor(meta: dict, soup: BeautifulSoup) -> dict:
     title = soup.find("title")
@@ -37,8 +38,8 @@ def metadata_extractor(meta: dict, soup: BeautifulSoup) -> dict:
 
 def load_langchain_docs():
     return SitemapLoader(
-        "https://python.langchain.com/sitemap.xml",
-        filter_urls=["https://python.langchain.com/"],
+        "https://vinpearl.com/vi/faqs/sitemap_index.xml",
+        filter_urls=["https://vinpearl.com/vi/faqs"],
         parsing_function=langchain_docs_extractor,
         default_parser="lxml",
         bs_kwargs={
@@ -52,7 +53,7 @@ def load_langchain_docs():
 
 def load_langsmith_docs():
     return RecursiveUrlLoader(
-        url="https://docs.smith.langchain.com/",
+        url="https://cassio.org/",
         max_depth=8,
         extractor=simple_extractor,
         prevent_outside=True,
@@ -74,7 +75,7 @@ def simple_extractor(html: str) -> str:
 
 def load_api_docs():
     return RecursiveUrlLoader(
-        url="https://api.python.langchain.com/en/latest/",
+        url="https://cassio.org/",
         max_depth=8,
         extractor=simple_extractor,
         prevent_outside=True,
@@ -112,13 +113,14 @@ def ingest_docs():
 
     docs_from_documentation = load_langchain_docs()
     logger.info(f"Loaded {len(docs_from_documentation)} docs from documentation")
-    docs_from_api = load_api_docs()
-    logger.info(f"Loaded {len(docs_from_api)} docs from API")
+    #docs_from_api = load_api_docs()
+    #logger.info(f"Loaded {len(docs_from_api)} docs from API")
     docs_from_langsmith = load_langsmith_docs()
     logger.info(f"Loaded {len(docs_from_langsmith)} docs from Langsmith")
 
     docs_transformed = text_splitter.split_documents(
-        docs_from_documentation + docs_from_api + docs_from_langsmith
+        #docs_from_documentation + docs_from_api + docs_from_langsmith
+        docs_from_documentation + docs_from_langsmith
     )
     docs_transformed = [doc for doc in docs_transformed if len(doc.page_content) > 10]
 

@@ -35,11 +35,11 @@ from langsmith import Client
 
 
 RESPONSE_TEMPLATE = """\
-You are an Teacher's assistant,tasked with designing courses, study plan, generating questions for the students based on the content and providing measurable goals based on student abilities \
-about specific physics topic in a text book content in Mongolian language. \
-Always respond to the question in the same language the user asked the question.
+You are an AI Assistant for Military Bank, tasked with answering any question \
+about finanical documents. Remember the documents are in vietnamese language. \
+If the user question was english, respond in english. If the user question is vietnamese, respond in vietnamese.
 
-Generate a comprehensive and informative answer of 400 words or less for the \
+Generate a comprehensive and informative answer of 200 words or less for the \
 given question based solely on the provided search results (Reference material, URL and content). You must \
 only use information from the provided search results. Use an unbiased and \
 journalistic tone. Combine search results together into a coherent answer. Do not \
@@ -52,8 +52,8 @@ answers for each entity.
 You should use bullet points in your answer for readability. Put citations where they apply
 rather than putting them all at the end.
 
-If there is nothing in the context relevant to the question at hand, generate a repsonse \
-based on your knowledge on the context or the question.
+If there is nothing in the context relevant to the question at hand, just say "Hmm, \
+I'm not sure." Don't try to make up an answer.
 
 Anything between the following `context`  html blocks is retrieved from a knowledge \
 bank, not part of the conversation with the user. Don't return the sources or the context documents back.
@@ -62,17 +62,18 @@ bank, not part of the conversation with the user. Don't return the sources or th
     {context} 
 <context/>
 
-REMEMBER: Anything between the preceding 'context' \
+REMEMBER: If there is no relevant information within the context, just say "Hmm, I'm \
+not sure." Don't try to make up an answer. Anything between the preceding 'context' \
 html blocks is retrieved from a knowledge bank, not part of the conversation with the \
 user.\
 """
 
 COHERE_RESPONSE_TEMPLATE = """\
-You are an Teacher's assistant,tasked with designing courses, study plan, generating questions for the students based on the content and providing measurable goals based on student abilities \
-about specific physics topic in a text book content in Mongolian language. \
-Always respond to the question in the same language the user asked the question.
+You are an AI Assistant for Military Bank, tasked with answering any question \
+about finanical documents. Remember the documents are in vietnamese language \
+If the user question was english, respond in english. If the user question is vietnamese, respond in vietnamese.
 
-Generate a comprehensive and informative answer of 400 words or less for the \
+Generate a comprehensive and informative answer of 200 words or less for the \
 given question based solely on the provided search results (Reference material, URL and content). You must \
 only use information from the provided search results. Use an unbiased and \
 journalistic tone. Combine search results together into a coherent answer. Do not \
@@ -85,12 +86,13 @@ answers for each entity.
 You should use bullet points in your answer for readability. Put citations where they apply
 rather than putting them all at the end. 
 
-If there is nothing in the context relevant to the question at hand, generate a repsonse \
-based on your knowledge on the context or the question.
+If there is nothing in the context relevant to the question at hand, just say "Hmm, \
+I'm not sure." Don't try to make up an answer.
 
-REMEMBER: Anything between the preceding 'context' \
+REMEMBER: If there is no relevant information within the context, just say "Hmm, I'm \
+not sure." Don't try to make up an answer. Anything between the preceding 'context' \
 html blocks is retrieved from a knowledge bank, not part of the conversation with the \
-user. Don't return the sources or the context documents back.\
+user.\
 """
 
 REPHRASE_TEMPLATE = """\
@@ -134,7 +136,7 @@ def get_retriever() -> BaseRetriever:
         token=token,
         namespace=keyspace,
     )
-    return vstore.as_retriever(search_kwargs=dict(k=10))
+    return vstore.as_retriever(search_kwargs=dict(k=3))
 
 
 def create_retriever_chain(
@@ -242,7 +244,7 @@ llm = ChatOpenAI(
     ConfigurableField(id="llm"),
     default_key="openai_gpt_3_5_turbo",
     openai_gpt_4=ChatOpenAI(
-        model="gpt-4-0125-preview",
+        model="gpt-4o",
         streaming=True,
         temperature=0,
     ),

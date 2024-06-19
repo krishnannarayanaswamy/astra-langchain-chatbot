@@ -31,7 +31,7 @@ export function EmptyState(props: { onChoice: (question: string) => any }) {
               color={"gray.200"}
               textAlign={"center"}
             >
-              Би долгионы сэдвийг энэхүү оюутанд хэрхэн заах талаар зөвлөгөө өгөхийг хүсч буй, аутизмтай сурагчтай ажилладаг.
+              Hồ sơ vay vốn của khách hàng cá nhân
             </Heading>
           </CardHeader>
         </Card>
@@ -52,7 +52,7 @@ export function EmptyState(props: { onChoice: (question: string) => any }) {
               color={"gray.200"}
               textAlign={"center"}
             >
-              Намайг 10-р ангийн сурагчийг давтлагын шалгалтанд бэлдэж байгаа долгионы сэдэвтэй холбоотой сургалтын гарын авлага өгнө үү.
+              Mục Truy cập nhanh gồm những gì
             </Heading>
           </CardHeader>
         </Card>

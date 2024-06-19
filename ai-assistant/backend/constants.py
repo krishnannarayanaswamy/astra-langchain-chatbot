@@ -1,1 +1,1 @@
-ASTRA_COLLECTION_NAME = "sav_docs"
+ASTRA_COLLECTION_NAME = "mb_bank_data"

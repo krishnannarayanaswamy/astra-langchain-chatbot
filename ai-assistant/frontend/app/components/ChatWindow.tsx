@@ -142,10 +142,8 @@ export function ChatWindow(props: { conversationId: string }) {
           sources = streamedResponse.logs[
             sourceStepName
           ].final_output.output.map((doc: Record<string, any>) => ({
-            url: doc.metadata.medle,
-            title: doc.metadata.textbook_content_name,
-            additional_url: doc.metadata.laboratory,
-            additional_title : doc.metadata.textbook_name,
+            url: doc.metadata.source,
+            title: doc.metadata.source,
           }));
         }
         if (streamedResponse.id !== undefined) {
@@ -223,7 +221,7 @@ export function ChatWindow(props: { conversationId: string }) {
           mb={1}
           color={"white"}
         >
-          Teacher's AI Assistant
+          AI Assistant
         </Heading>
         {messages.length > 0 ? (
           <Heading fontSize="md" fontWeight={"normal"} mb={1} color={"white"}>
@@ -237,12 +235,12 @@ export function ChatWindow(props: { conversationId: string }) {
             marginTop={"10px"}
             textAlign={"center"}
           >
-            Welcome to Teacher's Assistant. Ask me any questions
+            Welcome to AI Assistant. Ask me any questions
           </Heading>
         )}
         <div className="text-white flex flex-wrap items-center mt-4">
           <div className="flex items-center mb-2">
-            <span className="shrink-0 mr-2">Powered by</span>
+            <span className="shrink-0 mr-2">Choose your Chat Model</span>
             {llmIsLoading ? (
               <Spinner className="my-2"></Spinner>
             ) : (
@@ -292,7 +290,7 @@ export function ChatWindow(props: { conversationId: string }) {
           value={input}
           maxRows={5}
           marginRight={"56px"}
-          placeholder="Намайг 10-р ангийн сурагчийг давтлагын шалгалтанд бэлдэж байгаа долгионы сэдэвтэй холбоотой сургалтын гарын авлага өгнө үү."
+          placeholder="Tóm lược quy trình cho khách hàng mới?"
           textColor={"white"}
           borderColor={"rgb(58, 58, 61)"}
           onChange={(e) => setInput(e.target.value)}
